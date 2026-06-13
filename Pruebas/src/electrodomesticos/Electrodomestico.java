@@ -9,7 +9,7 @@ public class Electrodomestico {
 	char consumos[] = {'A', 'B', 'C', 'D', 'E', 'F'};
 	boolean check;
 	String precio_consumo[][] = {{"A","B", "C", "D", "E", "F" }, {"100", "80", "60", "50", "30", "10"}};
-	String precio_peso[][] = {{"0-19", "20-49", "50-79", ">80"}, {"10", "50", "80", "100"}};
+	double precio_peso[][] = {{19, 49, 79, 80}, {10, 50, 80, 100}};
 	
 	Electrodomestico(){
 		
@@ -67,7 +67,18 @@ public class Electrodomestico {
 	}
 	
 	public double precioFinal() {
-		
+		double p_cons = 0, p_pes = 0;
+		for(int i = 0; i < precio_consumo.length; i++) {
+			if(precio_consumo[0][i].equals(String.valueOf(this.consumo))) {
+				p_cons = Double.parseDouble(precio_consumo[1][i]);
+			}
+		}
+		for(int i = 0; i < precio_peso.length; i++) {
+			if(precio_peso[0][i] == this.peso) {
+				p_pes = precio_peso[1][i];
+			}
+		}
+		return this.precio_base + p_cons + p_pes;
 	}
 	
 }

@@ -1,5 +1,5 @@
 package electrodomesticos;
 
-public class Television {
+public class Television extends Electrodomestico{
 
 }
